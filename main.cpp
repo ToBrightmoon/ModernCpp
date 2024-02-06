@@ -1,18 +1,30 @@
 #include <iostream>
 using namespace std;
 
+struct X
+{
+public:
+    X()
+    {
+        cout << "默认构造" << "\n";
+    }
+    X(const X&)
+    {
+        cout << "拷贝构造" << "\n";
+    }
 
+    X(X&& x)
+    {
+        cout << "移动构造" << "\n";
+    }
+};
 
 
 int main()
 {
-    auto p = [num = 0](){return 0;};
-    auto q = [](){return 0;};
-    auto p_ = [](auto a){cout << a << "\n";};
-    p_(10);
-    p_("str");
-    cout << sizeof p << "\n";  // 4
-    cout << sizeof q << "\n";  // 1
+//    X();
+//    X x = move(X());
+    X x2 = X();
     return 0;
 }
 
