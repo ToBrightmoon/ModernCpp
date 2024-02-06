@@ -1,33 +1,27 @@
 #include <iostream>
 using namespace std;
 
-class A
+void func()
 {
-public:
-    void func();
-    virtual void virFunc();
-    int ptr;
-};
-
-void A::func() {
-
+    cout << "hello" << "\n";
 }
 
-void A::virFunc() {
+void g() noexcept
+{
+    cout << "hello" << "\n";
+}
 
+void h() noexcept(true)
+{
+    cout << "hello" << "\n";
 }
 
 
 int main()
 {
-    auto basePtr = &A::ptr;
-    cout << *reinterpret_cast<int*>(&basePtr) << "\n";
-
-    auto VirPtr = &A::virFunc;
-    auto func = *(int*)(&VirPtr);
-    std::cout<< func <<'\n';
-
-    auto funcPtr = &A::func;
-    cout << funcPtr << "\n";
+    cout << std::boolalpha << noexcept(func()) << "\n";
+    cout << std::boolalpha << noexcept(g()) << "\n";
+    cout << std::boolalpha << noexcept(h()) << "\n";
+    auto gg = h;
     return 0;
 }
