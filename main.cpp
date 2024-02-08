@@ -4,27 +4,19 @@ using namespace std;
 struct X
 {
 public:
-    X()
-    {
-        cout << "默认构造" << "\n";
-    }
-    X(const X&)
-    {
-        cout << "拷贝构造" << "\n";
-    }
+   void f() & { cout << "左值" << "\n";};
 
-    X(X&& x)
-    {
-        cout << "移动构造" << "\n";
-    }
+   void f() && { cout << "右值" << "\n";};
+
 };
 
 
 int main()
 {
-//    X();
-//    X x = move(X());
     X x2 = X();
-    return 0;
+    x2.f();
+
+    std::move(x2).f()
+;    return 0;
 }
 
