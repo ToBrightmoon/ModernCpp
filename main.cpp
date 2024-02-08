@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct X
@@ -10,13 +11,8 @@ struct X
 
 int main()
 {
-     X x;
-     auto& [a,b] = x;
-
-     cout << a << " " << b << "\n";
-     a = 1;
-     b = 3;
-     cout << x.x << " " << x.y;
-;    return 0;
+    vector vec(10,0);
+    cout << vec.size();
+    return 0;
 }
 
