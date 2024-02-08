@@ -3,20 +3,20 @@ using namespace std;
 
 struct X
 {
-public:
-   void f() & { cout << "左值" << "\n";};
-
-   void f() && { cout << "右值" << "\n";};
-
+    int x = 1;
+    int y = 2;
 };
 
 
 int main()
 {
-    X x2 = X();
-    x2.f();
+     X x;
+     auto& [a,b] = x;
 
-    std::move(x2).f()
+     cout << a << " " << b << "\n";
+     a = 1;
+     b = 3;
+     cout << x.x << " " << x.y;
 ;    return 0;
 }
 
