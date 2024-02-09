@@ -2,31 +2,36 @@
 #include <vector>
 using namespace std;
 
-
-//template <typename ...Args>
-//void Print(Args... args)
-//{
-//    Print(args...);
-//}
-
-template <typename T>
-void Print(T a)
+template <typename... Args>
+int SubLeft(Args... args)
 {
-    cout << a << "\n";
+    return ( ... - args);
 }
 
-template <typename T,typename ...Args>
-void Print(T a, Args... args)
+template <typename... Args>
+int SubRight(Args... args)
 {
-    cout << a << " ";
-    Print(args...);
+    return ( args - ...);
 }
 
+template <typename... Args>
+int SubLeftMul(Args... args)
+{
+    return ( 10 - ... - args);
+}
 
+template <typename... Args>
+int SubRightMul(Args... args)
+{
+    return ( args - ... - 10);
+}
 
 int main()
 {
-    Print(1,2,3,4,5);
+    cout << SubLeft(1,2,4,5) << "\n"; // -10
+    cout << SubRight(1,2,4,5) << "\n"; // -2
+    cout << SubLeftMul(1,3,4,0) << "\n"; // -2
+    cout << SubRightMul(1,2,4,5) << "\n"; // -2
     return 0;
 }
 
