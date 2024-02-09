@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 
+template <class T>
+T v {};
+
 template <typename... Args>
 int SubLeft(Args... args)
 {
@@ -32,6 +35,7 @@ int main()
     cout << SubRight(1,2,4,5) << "\n"; // -2
     cout << SubLeftMul(1,3,4,0) << "\n"; // -2
     cout << SubRightMul(1,2,4,5) << "\n"; // -2
+    cout << v<int>;
     return 0;
 }
 
