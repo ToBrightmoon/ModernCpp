@@ -2,40 +2,25 @@
 #include <vector>
 using namespace std;
 
-template <class T>
-T v {};
-
-template <typename... Args>
-int SubLeft(Args... args)
+template <typename T,typename Elem>
+void f(T a, Elem e)
 {
-    return ( ... - args);
+    cout << a << " " << e << "\n";
 }
 
-template <typename... Args>
-int SubRight(Args... args)
+
+template <typename T>
+void f<T,double>(T a, double e)
 {
-    return ( args - ...);
+        cout << a << " " << "double: " << e << "\n";
 }
 
-template <typename... Args>
-int SubLeftMul(Args... args)
-{
-    return ( 10 - ... - args);
-}
 
-template <typename... Args>
-int SubRightMul(Args... args)
-{
-    return ( args - ... - 10);
-}
 
 int main()
 {
-    cout << SubLeft(1,2,4,5) << "\n"; // -10
-    cout << SubRight(1,2,4,5) << "\n"; // -2
-    cout << SubLeftMul(1,3,4,0) << "\n"; // -2
-    cout << SubRightMul(1,2,4,5) << "\n"; // -2
-    cout << v<int>;
+    X<int,string>::f(2,"str");
+    X<int,double>::f(1,2.0);
     return 0;
 }
 
